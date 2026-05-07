@@ -1,16 +1,12 @@
-
-const config = {
-    name: "Sami",
-    pass: "1234"
-};
-
+const name = "Admin";
+const pass = "1234";
 
 function validate() {
     const u = document.getElementById('username').value;
     const p = document.getElementById('password').value;
     const err = document.getElementById('error');
 
-    if (u === config.name && p === config.pass) {
+    if (u === name && p === pass) {
         document.getElementById('loginCard').classList.add('hidden');
         document.getElementById('mainContent').classList.remove('hidden');
         document.getElementById('greet').innerText = "Hello, " + u;
@@ -19,30 +15,22 @@ function validate() {
     }
 }
 
-// 3D Mouse Tilt Effect
-const container = document.querySelector('.container');
-const cards = document.querySelectorAll('.card');
-
-container.addEventListener('mousemove', (e) => {
-    let x = (window.innerWidth / 2 - e.pageX) / 25;
-    let y = (window.innerHeight / 2 - e.pageY) / 25;
+// Mobile Tilt Effect
+document.addEventListener('touchmove', (e) => {
+    const touch = e.touches[0];
+    let x = (window.innerWidth / 2 - touch.pageX) / 15;
+    let y = (window.innerHeight / 2 - touch.pageY) / 15;
     
-    cards.forEach(card => {
-        if (!card.classList.contains('hidden')) {
-            card.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
-        }
-    });
+    const activeCard = document.querySelector('.card:not(.hidden)');
+    if(activeCard) {
+        activeCard.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
+    }
 });
 
-container.addEventListener('mouseleave', () => {
-    cards.forEach(card => {
-        card.style.transform = `rotateY(0deg) rotateX(0deg)`;
-        card.style.transition = "all 0.5s ease";
-    });
-});
-
-container.addEventListener('mouseenter', () => {
-    cards.forEach(card => {
-        card.style.transition = "none";
-    });
+document.addEventListener('touchend', () => {
+    const activeCard = document.querySelector('.card:not(.hidden)');
+    if(activeCard) {
+        activeCard.style.transform = `rotateY(0deg) rotateX(0deg)`;
+        activeCard.style.transition = "0.5s";
+    }
 });
