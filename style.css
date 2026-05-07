@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+    font-family: sans-serif;
 }
 
 body {
@@ -12,87 +12,69 @@ body {
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    touch-action: none; 
 }
 
-/* Background Blobs */
 .blob {
     position: absolute;
-    width: 400px;
-    height: 400px;
-    filter: blur(80px);
+    width: 250px;
+    height: 250px;
+    filter: blur(50px);
     border-radius: 50%;
     z-index: 1;
-    animation: move 15s infinite alternate ease-in-out;
+    animation: move 10s infinite alternate linear;
 }
 
-.circle-1 { background: #ff007f; top: -10%; left: -10%; }
-.circle-2 { background: #7000ff; bottom: -10%; right: -10%; animation-delay: -3s; }
-.circle-3 { background: #00e5ff; bottom: 20%; left: 10%; width: 250px; height: 250px; animation-delay: -6s; }
+.circle-1 { background: #ff007f; top: -5%; left: -5%; }
+.circle-2 { background: #7000ff; bottom: -5%; right: -5%; }
+.circle-3 { background: #00e5ff; bottom: 20%; left: 0; width: 150px; height: 150px; }
 
 @keyframes move {
-    0% { transform: translate(0, 0) scale(1); }
-    50% { transform: translate(60px, -40px) scale(1.1); }
-    100% { transform: translate(-40px, 60px) scale(0.9); }
+    from { transform: translate(0, 0); }
+    to { transform: translate(30px, 30px); }
 }
 
-/* Glassmorphism Card Container */
 .container {
     position: relative;
     z-index: 10;
+    width: 90%; 
+    max-width: 360px;
     perspective: 1000px;
 }
 
 .card {
-    width: 380px;
-    padding: 40px;
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 25px;
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+    padding: 30px;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
     text-align: center;
-    color: #ffffff;
-    transform-style: preserve-3d;
-    transition: transform 0.1s ease;
+    color: #fff;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+    transition: transform 0.1s;
 }
-
-h2 { margin-bottom: 20px; font-size: 2rem; }
 
 input {
     width: 100%;
     padding: 12px;
     margin: 10px 0;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 12px;
-    color: white;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 10px;
+    color: #fff;
     outline: none;
 }
 
 .btn {
     width: 100%;
     padding: 12px;
-    margin-top: 15px;
-    border: none;
-    border-radius: 12px;
     background: #fff;
-    color: #000;
-    font-weight: 700;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.btn:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
-}
-
-#error {
-    color: #ff4d4d;
-    font-size: 0.9rem;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
     margin-top: 10px;
-    display: none;
 }
 
+#error { color: #ff4d4d; margin-top: 10px; display: none; }
 .hidden { display: none !important; }
