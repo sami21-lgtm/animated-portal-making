@@ -1,26 +1,15 @@
+document.getElementById('loginForm').addEventListener('submit', function(e) {
+    e.preventDefault();
 
-const validCredentials = {
-    username: "admin",
-    password: "1234"
-};
+    const username = document.getElementById('user').value;
+    const password = document.getElementById('pass').value;
 
-function validateForm(event) {
-  
-    event.preventDefault();
+    const myName = "Admin"; 
+    const myPass = "1234";
 
-    const u = document.getElementById('username').value;
-    const p = document.getElementById('password').value;
-    const message = document.getElementById('message');
-
-  
-    if (u === validCredentials.username && p === validCredentials.password) {
-        message.style.color = "#00e676"; // Green color
-        message.innerText = "Login Successful!";
-        
-        // redirect to another page if needed
-        // window.location.href = "welcome.html"; 
+    if (username === myName && password === myPass) {
+        alert("Login Successful! Welcome " + username);
     } else {
-        message.style.color = "#ff4d4d"; // Red color
-        message.innerText = "Error: Invalid username or password.";
+        alert("Invalid Details. Please try again.");
     }
-}
+});
