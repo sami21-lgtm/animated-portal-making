@@ -1,36 +1,26 @@
-const name = "Admin";
-const pass = "1234";
 
-function validate() {
+const validCredentials = {
+    username: "admin",
+    password: "1234"
+};
+
+function validateForm(event) {
+  
+    event.preventDefault();
+
     const u = document.getElementById('username').value;
     const p = document.getElementById('password').value;
-    const err = document.getElementById('error');
+    const message = document.getElementById('message');
 
-    if (u === name && p === pass) {
-        document.getElementById('loginCard').classList.add('hidden');
-        document.getElementById('mainContent').classList.remove('hidden');
-        document.getElementById('greet').innerText = "Hello, " + u;
+  
+    if (u === validCredentials.username && p === validCredentials.password) {
+        message.style.color = "#00e676"; // Green color
+        message.innerText = "Login Successful!";
+        
+        // redirect to another page if needed
+        // window.location.href = "welcome.html"; 
     } else {
-        err.style.display = 'block';
+        message.style.color = "#ff4d4d"; // Red color
+        message.innerText = "Error: Invalid username or password.";
     }
 }
-
-// Mobile Tilt Effect
-document.addEventListener('touchmove', (e) => {
-    const touch = e.touches[0];
-    let x = (window.innerWidth / 2 - touch.pageX) / 15;
-    let y = (window.innerHeight / 2 - touch.pageY) / 15;
-    
-    const activeCard = document.querySelector('.card:not(.hidden)');
-    if(activeCard) {
-        activeCard.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
-    }
-});
-
-document.addEventListener('touchend', () => {
-    const activeCard = document.querySelector('.card:not(.hidden)');
-    if(activeCard) {
-        activeCard.style.transform = `rotateY(0deg) rotateX(0deg)`;
-        activeCard.style.transition = "0.5s";
-    }
-});
