@@ -2,79 +2,196 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
 body {
-    background: #0a0a0a;
-    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    min-height: 100vh;
+    background: #0d1117; /* Dark background from example */
     overflow: hidden;
-    touch-action: none; 
 }
 
-.blob {
-    position: absolute;
-    width: 250px;
-    height: 250px;
-    filter: blur(50px);
-    border-radius: 50%;
-    z-index: 1;
-    animation: move 10s infinite alternate linear;
-}
 
-.circle-1 { background: #ff007f; top: -5%; left: -5%; }
-.circle-2 { background: #7000ff; bottom: -5%; right: -5%; }
-.circle-3 { background: #00e5ff; bottom: 20%; left: 0; width: 150px; height: 150px; }
-
-@keyframes move {
-    from { transform: translate(0, 0); }
-    to { transform: translate(30px, 30px); }
-}
-
-.container {
+.form-container {
     position: relative;
-    z-index: 10;
-    width: 90%; 
-    max-width: 360px;
-    perspective: 1000px;
-}
-
-.card {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 20px;
-    padding: 30px;
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    text-align: center;
-    color: #fff;
+    width: 380px;
+    height: 420px;
+    background: #1c1c1c; /* Form card color */
+    border-radius: 8px;
+    overflow: hidden;
     box-shadow: 0 15px 35px rgba(0,0,0,0.5);
-    transition: transform 0.1s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-input {
-    width: 100%;
-    padding: 12px;
-    margin: 10px 0;
-    background: rgba(255,255,255,0.1);
-    border: 1px solid rgba(255,255,255,0.2);
-    border-radius: 10px;
-    color: #fff;
-    outline: none;
+.form-container::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 380px;
+    height: 420px;
+    background: linear-gradient(0deg, transparent, #ff007f, #ff007f);
+    transform-origin: bottom right;
+    animation: animate 6s linear infinite;
 }
+
+.form-container::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 380px;
+    height: 420px;
+    background: linear-gradient(0deg, transparent, #00ffff, #00ffff);
+    transform-origin: bottom right;
+    animation: animate 6s linear infinite;
+    animation-delay: -3s; /* Pink and Cyan delay */
+}
+
+@keyframes animate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+
+form {
+    position: absolute;
+    inset: 2px;
+    border-radius: 8px;
+    background: #1c1c1c;
+    z-index: 10;
+    padding: 50px 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+form h2 {
+    color: #fff;
+    font-weight: 600;
+    text-align: center;
+    letter-spacing: 0.1em;
+    margin-bottom: 30px;
+}
+
+
+.inputBox {
+    position: relative;
+    width: 300px;
+    margin-top: 25px;
+}
+
+.inputBox input {
+    position: relative;
+    width: 100%;
+    padding: 10px 10px 10px 5px;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #fff;
+    font-size: 1em;
+    letter-spacing: 0.05em;
+    z-index: 10;
+}
+
+.inputBox span {
+    position: absolute;
+    left: 0;
+    padding: 10px 10px 10px 5px;
+    font-size: 1em;
+    color: #8f8f8f;
+    pointer-events: none;
+    letter-spacing: 0.05em;
+    transition: 0.5s;
+}
+
+/* Floating label and underline effect */
+.inputBox input:valid ~ span,
+.inputBox input:focus ~ span {
+    color: #fff;
+    transform: translateY(-24px);
+    font-size: 0.75em;
+}
+
+.inputBox i {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background: #fff; /* Initial underline */
+    border-radius: 4px;
+    transition: 0.5s;
+    pointer-events: none;
+    z-index: 9;
+}
+
+.inputBox input:valid ~ i,
+.inputBox input:focus ~ i {
+    height: 2px;
+    background: #00ffff; /* Neon cyan underline on focus */
+}
+
+/* Links */
+.links {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.links a {
+    font-size: 0.85em;
+    color: #8f8f8f;
+    text-decoration: none;
+}
+
+.links a:hover {
+    color: #fff;
+}
+
 
 .btn {
-    width: 100%;
-    padding: 12px;
-    background: #fff;
     border: none;
-    border-radius: 10px;
-    font-weight: bold;
-    margin-top: 10px;
+    outline: none;
+    background: #fff;
+    padding: 11px 25px;
+    width: 100px;
+    margin-top: 30px;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 1em;
+    color: #1c1c1c;
+    align-self: flex-start;
+    transition: 0.3s;
 }
 
-#error { color: #ff4d4d; margin-top: 10px; display: none; }
-.hidden { display: none !important; }
+.btn:active {
+    transform: scale(0.97);
+}
+
+.btn:hover {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.error-msg {
+    color: #ff4d4d;
+    font-size: 0.9em;
+    margin-top: 15px;
+    text-align: center;
+}
+
+
+@media (max-width: 480px) {
+    .form-container {
+        width: 90%;
+        height: auto;
+    }
+    .inputBox {
+        width: 100%;
+    }
+}
