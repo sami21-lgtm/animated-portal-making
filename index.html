@@ -3,30 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Glassmorphism UI</title>
+    <title>Glassmorphism Mobile</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
- 
     <div class="blob circle-1"></div>
     <div class="blob circle-2"></div>
     <div class="blob circle-3"></div>
 
     <div class="container">
-        <!-- Login Card -->
         <div class="card" id="loginCard">
             <h2>Login</h2>
-            <input type="text" id="username" placeholder="Username">
+            <input type="text" id="username" placeholder="Name">
             <input type="password" id="password" placeholder="Password">
-            <button class="btn" onclick="validate()">Unlock Card</button>
-            <p id="error">Invalid username or password!</p>
+            <button class="btn" onclick="validate()">Unlock</button>
+            <p id="error">Wrong Info!</p>
         </div>
 
-      
         <div class="card hidden" id="mainContent">
-            <h2 id="greet">Welcome!</h2>
-            <p>You have successfully unlocked the premium glassmorphism interface.</p>
+            <h2 id="greet">Welcome</h2>
+            <p>Perfectly fitting on your mobile screen!</p>
             <button class="btn" onclick="location.reload()">Logout</button>
         </div>
     </div>
