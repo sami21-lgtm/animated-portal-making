@@ -1,15 +1,17 @@
 document.getElementById('loginForm').addEventListener('submit', function(e) {
     e.preventDefault();
 
-    const username = document.getElementById('user').value;
-    const password = document.getElementById('pass').value;
+    const u = document.getElementById('user').value;
+    const p = document.getElementById('pass').value;
 
-    const myName = "Admin"; 
-    const myPass = "1234";
+    const validUser = "Admin";
+    const validPass = "1234";
 
-    if (username === myName && password === myPass) {
-        alert("Login Successful! Welcome " + username);
+    if (u === validUser && p === validPass) {
+        document.getElementById('loginSection').classList.add('hidden');
+        document.getElementById('profileSection').classList.remove('hidden');
+        document.getElementById('displayName').innerText = "MD. Emtiaz Hossain Sami";
     } else {
-        alert("Invalid Details. Please try again.");
+        alert("Invalid Username or Password");
     }
 });
