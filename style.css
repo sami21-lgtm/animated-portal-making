@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -6,29 +8,80 @@
 }
 
 body {
+    background: #1c1f26; 
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    background: #0d1117; /* Dark background from example */
     overflow: hidden;
 }
 
+.container {
+    display: flex;
+    align-items: center;
+    gap: 100px;
+    max-width: 1200px;
+    width: 100%;
+    padding: 20px;
+}
 
-.form-container {
+
+.text-side {
+    position: relative;
+    flex: 1;
+    text-align: right;
+}
+
+.main-title {
+    font-size: 5rem;
+    color: #fff;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.sub-title {
+    font-size: 3.5rem;
+    color: transparent;
+    -webkit-text-stroke: 1px #888;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.tech-stack {
+    font-size: 1.5rem;
+    color: #fff;
+    margin-top: 10px;
+}
+
+.pink { color: #ff007f; font-weight: bold; }
+.cyan { color: #00ffff; font-weight: bold; }
+
+.bg-number {
+    position: absolute;
+    bottom: -60px;
+    right: 50px;
+    font-size: 12rem;
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.03);
+    z-index: -1;
+}
+
+
+.form-side {
+    flex: 1;
+}
+
+.login-card {
     position: relative;
     width: 380px;
     height: 420px;
-    background: #1c1c1c; /* Form card color */
+    background: #1c1c1c;
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
-.form-container::before {
+
+.login-card::before {
     content: '';
     position: absolute;
     top: -50%;
@@ -40,7 +93,7 @@ body {
     animation: animate 6s linear infinite;
 }
 
-.form-container::after {
+.login-card::after {
     content: '';
     position: absolute;
     top: -50%;
@@ -50,7 +103,7 @@ body {
     background: linear-gradient(0deg, transparent, #00ffff, #00ffff);
     transform-origin: bottom right;
     animation: animate 6s linear infinite;
-    animation-delay: -3s; /* Pink and Cyan delay */
+    animation-delay: -3s;
 }
 
 @keyframes animate {
@@ -58,12 +111,11 @@ body {
     100% { transform: rotate(360deg); }
 }
 
-
 form {
     position: absolute;
     inset: 2px;
-    border-radius: 8px;
     background: #1c1c1c;
+    border-radius: 8px;
     z-index: 10;
     padding: 50px 40px;
     display: flex;
@@ -72,71 +124,62 @@ form {
 
 form h2 {
     color: #fff;
-    font-weight: 600;
     text-align: center;
-    letter-spacing: 0.1em;
+    font-weight: 500;
     margin-bottom: 30px;
 }
 
 
-.inputBox {
-    position: relative;
-    width: 300px;
-    margin-top: 25px;
-}
-
-.inputBox input {
+.input-box {
     position: relative;
     width: 100%;
-    padding: 10px 10px 10px 5px;
+    margin-top: 30px;
+}
+
+.input-box input {
+    width: 100%;
+    padding: 10px 0;
     background: transparent;
     border: none;
     outline: none;
     color: #fff;
-    font-size: 1em;
-    letter-spacing: 0.05em;
+    font-size: 1rem;
     z-index: 10;
 }
 
-.inputBox span {
+.input-box span {
     position: absolute;
     left: 0;
-    padding: 10px 10px 10px 5px;
-    font-size: 1em;
+    padding: 10px 0;
     color: #8f8f8f;
     pointer-events: none;
-    letter-spacing: 0.05em;
     transition: 0.5s;
 }
 
-/* Floating label and underline effect */
-.inputBox input:valid ~ span,
-.inputBox input:focus ~ span {
-    color: #fff;
+.input-box input:focus ~ span,
+.input-box input:valid ~ span {
+    color: #00ffff;
     transform: translateY(-24px);
-    font-size: 0.75em;
+    font-size: 0.8rem;
 }
 
-.inputBox i {
+.input-box i {
     position: absolute;
     left: 0;
     bottom: 0;
     width: 100%;
     height: 2px;
-    background: #fff; /* Initial underline */
+    background: #fff;
     border-radius: 4px;
     transition: 0.5s;
-    pointer-events: none;
-    z-index: 9;
 }
 
-.inputBox input:valid ~ i,
-.inputBox input:focus ~ i {
+.input-box input:focus ~ i,
+.input-box input:valid ~ i {
     height: 2px;
-    background: #00ffff; /* Neon cyan underline on focus */
+    background: #00ffff;
 }
 
-/* Links */
 .links {
     display: flex;
     justify-content: space-between;
@@ -144,54 +187,31 @@ form h2 {
 }
 
 .links a {
-    font-size: 0.85em;
+    font-size: 0.8rem;
     color: #8f8f8f;
     text-decoration: none;
 }
 
-.links a:hover {
-    color: #fff;
-}
+.links a:hover { color: #fff; }
 
-
-.btn {
-    border: none;
-    outline: none;
-    background: #fff;
-    padding: 11px 25px;
+.login-btn {
     width: 100px;
-    margin-top: 30px;
+    padding: 10px;
+    background: #fff;
+    color: #1c1c1c;
+    border: none;
     border-radius: 4px;
+    margin-top: 30px;
     font-weight: 600;
     cursor: pointer;
-    font-size: 1em;
-    color: #1c1c1c;
-    align-self: flex-start;
-    transition: 0.3s;
-}
-
-.btn:active {
-    transform: scale(0.97);
-}
-
-.btn:hover {
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-}
-
-.error-msg {
-    color: #ff4d4d;
-    font-size: 0.9em;
-    margin-top: 15px;
-    text-align: center;
 }
 
 
-@media (max-width: 480px) {
-    .form-container {
-        width: 90%;
-        height: auto;
+@media (max-width: 991px) {
+    .container {
+        flex-direction: column;
+        gap: 50px;
     }
-    .inputBox {
-        width: 100%;
-    }
+    .text-side { text-align: center; }
+    .bg-number { right: 50%; transform: translateX(50%); }
 }
