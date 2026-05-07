@@ -10,8 +10,7 @@ document.getElementById('loginForm').addEventListener('submit', function(e) {
     if (u === validUser && p === validPass) {
         document.getElementById('loginSection').classList.add('hidden');
         document.getElementById('profileSection').classList.remove('hidden');
-        document.getElementById('displayName').innerText = "MD. Emtiaz Hossain Sami";
     } else {
-        alert("Invalid Username or Password");
+        alert("Invalid Username or Password!");
     }
 });
